@@ -1,0 +1,198 @@
+<html>
+<head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+   <body>
+      <title>Churn Prediction</title>
+	  <div class="container">
+		<h1 align="center">Churn Prediction Model</h1>
+		<div class="row">
+
+		  <form action="http://localhost:5000/" method="POST">
+		  	<div class="col-sm-9">
+			<div class="form-group purple-border">
+					<label for="comment">SeniorCitizen:</label>
+					<select class="form-control" id="query1" name="query1" required>
+						<option value=""></option>
+						<option value="0" {{ 'selected' if query1 == '0' else '' }}>0</option>
+						<option value="1" {{ 'selected' if query1 == '1' else '' }}>1</option>
+					</select>
+			</div>
+				
+			<div class="form-group  purple-border">
+				  <label for="comment">MonthlyCharges:</label>
+				  <textarea class="form-control" rows="2" id="query2" name="query2" rows="2" cols="5" autofocus>{{query2}}</textarea>
+			</div>
+			<div class="form-group  purple-border">
+				  <label for="comment">TotalCharges:</label>
+				  <textarea class="form-control" rows="2" id="query3" name="query3" rows="2" cols="5" autofocus>{{query3}}</textarea>
+			</div>
+			<div class="form-group  purple-border">
+				<label for="comment">gender:</label>
+				<select class="form-control" id="query4" name="query4" required>
+				  <option value=""></option>
+				  <option value="Male" {{ 'selected' if query4 == 'Male' else '' }}>Male</option>
+				  <option value="Female" {{ 'selected' if query4 == 'Female' else '' }}>Female</option>
+				</select>
+		 	 </div>
+			<div class="form-group purple-border">
+				<label for="comment">Partner:</label>
+				<select class="form-control" id="query5" name="query5" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query6 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query6 == 'No' else '' }}>No</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">Dependents:</label>
+				<select class="form-control" id="query6" name="query6" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query6 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query6 == 'No' else '' }}>No</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">PhoneService:</label>
+				<select class="form-control" id="query7" name="query7" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query7 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query7 == 'No' else '' }}>No</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">MultipleLines:</label>
+				<select class="form-control" id="query8" name="query8" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query8 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query8 == 'No' else '' }}>No</option>
+					<option value="No phone service" {{ 'selected' if query8 == 'No phone service' else '' }}>No phone service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">InternetService:</label>
+				<select class="form-control" id="query9" name="query9" required>
+					<option value=""></option>
+					<option value="Fiber optic" {{ 'selected' if query9 == 'Fiber optic' else '' }}>Fiber optic</option>
+					<option value="DSL" {{ 'selected' if query9 == 'DSL' else '' }}>DSL</option>
+					<option value="No" {{ 'selected' if query9 == 'No' else '' }}>No</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">OnlineSecurity:</label>
+				<select class="form-control" id="query10" name="query10" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query10 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query10 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query10 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">OnlineBackup:</label>
+				<select class="form-control" id="query11" name="query11" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query11 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query11 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query11 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">DeviceProtection:</label>
+				<select class="form-control" id="query12" name="query12" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query12 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query12 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query12 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">TechSupport:</label>
+				<select class="form-control" id="query13" name="query13" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query13 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query13 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query13 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">StreamingTV:</label>
+				<select class="form-control" id="query14" name="query14" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query14 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query14 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query14 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">StreamingMovies:</label>
+				<select class="form-control" id="query15" name="query15" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query15 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query15 == 'No' else '' }}>No</option>
+					<option value="No internet service" {{ 'selected' if query15 == 'No internet service' else '' }}>No internet service</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">Contract:</label>
+				<select class="form-control" id="query16" name="query16" required>
+					<option value=""></option>
+					<option value="Month-to-month" {{ 'selected' if query16 == 'Month-to-month' else '' }}>Month-to-month</option>
+					<option value="One year" {{ 'selected' if query16 == 'One year' else '' }}>One year</option>
+					<option value="Two year" {{ 'selected' if query16 == 'Two year' else '' }}>Two year</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">PaperlessBilling:</label>
+				<select class="form-control" id="query17" name="query17" required>
+					<option value=""></option>
+					<option value="Yes" {{ 'selected' if query17 == 'Yes' else '' }}>Yes</option>
+					<option value="No" {{ 'selected' if query17 == 'No' else '' }}>No</option>
+				</select>
+			</div>
+			
+			<div class="form-group purple-border">
+				<label for="comment">PaymentMethod:</label>
+				<select class="form-control" id="query18" name="query18" required>
+					<option value=""></option>
+					<option value="Electronic check" {{ 'selected' if query18 == 'Electronic check' else '' }}>Electronic check</option>
+					<option value="Mailed check" {{ 'selected' if query18 == 'Mailed check' else '' }}>Mailed check</option>
+					<option value="Bank transfer (automatic)" {{ 'selected' if query18 == 'Bank transfer (automatic)' else '' }}>Bank transfer (automatic)</option>
+					<option value="Credit card (automatic)" {{ 'selected' if query18 == 'Credit card (automatic)' else '' }}>Credit card (automatic)</option>
+				</select>
+			</div>
+			
+			<div class="form-group  purple-border">
+				  <label for="comment">tenure:</label>
+				  <textarea class="form-control" rows="2" id="query19" name="query19" rows="2" cols="5" autofocus>{{query19}}</textarea>
+			</div>
+
+			<div class="col-sm-3">
+			<button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
+			</div>
+		  </form>
+		  </div>
+		</div>
+		  
+		<div class="row"> 
+			<div class="col-sm-9">
+			<textarea class="form-control" rows="2" id="comment" name="query6" rows="2" cols="5" autofocus style="color: red; font-weight: bold;">{{output1}}</textarea>
+			<textarea class="form-control" rows="2" id="comment" name="query7" rows="2" cols="5" autofocus style="color: red; font-weight: bold;">{{output2}}</textarea>
+			</div>
+		</div>
+	</div>		
+   </body>
+</html>
